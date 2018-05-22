@@ -192,6 +192,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &801232799 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 45cb916d77614bc4f87a9bcd1b2b47af, type: 3}
+  m_PrefabInternal: {fileID: 422810267}
+--- !u!114 &801232800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 801232799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17823b05e0348ec499aae6b80d1cbbd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fl_speedMultiplier: 1.5
 --- !u!1001 &1041724599
 Prefab:
   m_ObjectHideFlags: 0
@@ -233,7 +249,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ab29fb9c227f75b4687737c50ba0e417, type: 3}
       propertyPath: m_LocalScale.y
-      value: 32
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ab29fb9c227f75b4687737c50ba0e417, type: 3}
       propertyPath: m_LocalScale.z
@@ -241,7 +257,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ab29fb9c227f75b4687737c50ba0e417, type: 3}
       propertyPath: m_LocalScale.x
-      value: 18
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: ab29fb9c227f75b4687737c50ba0e417, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -306,7 +322,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 32
+  orthographic size: 48
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
