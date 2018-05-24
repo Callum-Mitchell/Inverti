@@ -164,6 +164,10 @@ Prefab:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 45cb916d77614bc4f87a9bcd1b2b47af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45cb916d77614bc4f87a9bcd1b2b47af, type: 3}
   m_IsPrefabParent: 0
