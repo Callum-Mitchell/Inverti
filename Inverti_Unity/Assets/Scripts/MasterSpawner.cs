@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class MasterSpawner : MonoBehaviour {
 
+    public int int_levelStartDelay = 60;
     private static int int_framesUntilSpawn = 0;
     private static bool bl_isCallingWave = false;
 
+    [System.Serializable]
     public struct waveSpawner {
         public GameObject spawner;
         public int int_startDelayFrames; //the number of FixedUpdate calls before the spawner will be called
@@ -117,7 +119,7 @@ public class MasterSpawner : MonoBehaviour {
         fl_spawnIndices = getSpawnIndices();
         maxIndex = fl_spawnIndices[spawnerSet.Length];
 
-        int_framesUntilSpawn = 60; //gives a 0.5-second window upon starting a level before spawning anything
+        int_framesUntilSpawn = int_levelStartDelay; //gives a brief (adjustable) window upon starting a level before spawning anything
         bl_isCallingWave = false;
 	}
 	
