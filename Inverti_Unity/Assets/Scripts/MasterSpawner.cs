@@ -13,6 +13,10 @@ public class MasterSpawner : MonoBehaviour {
         public GameObject spawner;
         public int int_startDelayFrames; //the number of FixedUpdate calls before the spawner will be called
         public int int_endDelayFrames; //the number of FixedUpdate calls after the wave (spawner) is instantiated before the next is called
+        //TODO: instead of a preset time duration for each wave, have the wave being spawned
+        //(which may be variable in length depending on the elements called for spawning)
+        //calculate its own length, and use that value. (Can keep the post-wave delays as an option)
+
         public float fl_callFrequency; //used to determine the relative probability of the particular wave (spawner) being called
     }
 
