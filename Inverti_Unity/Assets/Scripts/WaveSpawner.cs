@@ -14,8 +14,6 @@ using UnityEngine;
  */
 public class WaveSpawner : MonoBehaviour {
 
-    
-
     //WaveElement can be used as the entire wave by making WaveObject contain the entire wave
     [System.Serializable]
     public struct WaveElement {
@@ -55,6 +53,41 @@ public class WaveSpawner : MonoBehaviour {
         yield break;
     }
 
+    WaveElement SelectElement() {
+
+        /* TODO: add faster implementation (definitely possible; overall goal is to take 
+         * the int arrays of possible spawnIDs for each wave element and transform them into
+         * arrays/lists of possible wave elements that can be called for each spawnID. It
+         * should be possible to do this in linear time. Alternatively, just have the desired
+         * information be what gets entered into the inspector during wave designing.
+         */
+        int selectedID;
+        int possibleIDCount = 0;
+        List<int> possibleIDs = new List<int>();
+
+        for (int scanID = 0; scanID < EnemyWaveSelection.Length; scanID++) {
+
+            bool containsID = false;
+            WaveElement scannedElement = EnemyWaveSelection[scanID];
+            int possibleOccurrenceCount = scannedElement.possibleSpawnIDs.Length;
+
+            for (int possibleSpawnIDsIndex = 0; possibleSpawnIDsIndex < possibleOccurrenceCount; possibleSpawnIDsIndex++) {
+
+                if (scannedElement.possibleSpawnIDs[possibleSpawnIDsIndex] == currentSpawnID) {
+                    containsID = true;
+                }
+            }
+
+            if(containsID) {
+                possibleIDs.Add(scanID);
+            }
+        }
+
+
+        selectedID = possibleIDs[Random.Range(0, possibleIDs.Count - 1)];
+        return EnemyWaveSelection[selectedID];
+    }
+
     // Use this for initialization
     void Start () {
 		
@@ -62,7 +95,15 @@ public class WaveSpawner : MonoBehaviour {
         bl_callingEnabled = false;
 
         //TODO: generate enemy wave 
-        EnemyWave = EnemyWaveSelection; //PLACEHOLDER
+        while(currentSpawnID < WaveLength) {
+
+
+        }
+
+        //EnemyWave = EnemyWaveSelection; //PLACEHOLDER
+
+        currentSpawnID = 0;
+        bl_callingEnabled = true;
 	}
 	
 	// Update is called once per frame
