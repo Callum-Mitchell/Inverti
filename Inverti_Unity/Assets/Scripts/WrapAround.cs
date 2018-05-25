@@ -16,11 +16,11 @@ public class WrapAround : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-        if (transform.position.x < leftBoundary) {
-            transform.Translate(new Vector3(wrapDistance, 0, 0), Space.World);
+        if (player.position.x < leftBoundary) {
+            player.Translate(new Vector3(wrapDistance, 0, 0), Space.World);
         }
-        else if (transform.position.x > 36) {
-            transform.Translate(new Vector3(-wrapDistance, 0, 0), Space.World);
+        else if (player.position.x > 36) {
+            player.Translate(new Vector3(-wrapDistance, 0, 0), Space.World);
         }
 
     }

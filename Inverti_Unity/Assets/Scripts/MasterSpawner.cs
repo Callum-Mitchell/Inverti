@@ -62,7 +62,8 @@ public class MasterSpawner : MonoBehaviour {
         int spawnerCount = spawnerSet.Length;
         int spawnerID = Mathf.RoundToInt(Mathf.Ceil(spawnerCount / 2.0f));
         int stepDistance = Mathf.RoundToInt(Mathf.Ceil((spawnerID + 1) / 2.0f));
-
+        Debug.Log(spawnerID);
+        Debug.Log(fl_spawnIndices.Length);
         float currentIndex = fl_spawnIndices[spawnerID];
         float prevIndex;
         if(spawnerID == 0) {
@@ -117,7 +118,7 @@ public class MasterSpawner : MonoBehaviour {
 	void Start () {
 
         fl_spawnIndices = getSpawnIndices();
-        maxIndex = fl_spawnIndices[spawnerSet.Length];
+        maxIndex = fl_spawnIndices[spawnerSet.Length - 1];
 
         int_framesUntilSpawn = int_levelStartDelay; //gives a brief (adjustable) window upon starting a level before spawning anything
         bl_isCallingWave = false;
@@ -128,7 +129,13 @@ public class MasterSpawner : MonoBehaviour {
 
         if (int_framesUntilSpawn <= 0 && !bl_isCallingWave) {
             bl_isCallingWave = true;
-            nextSpawner = spawnerSet[getSpawnerFromIndex(Random.Range(0.0f, maxIndex))];
+            Debug.Log(maxIndex);
+            if (fl_spawnIndices.Length == 1) {
+                nextSpawner = spawnerSet[0];
+            }
+            else {
+                nextSpawner = spawnerSet[getSpawnerFromIndex(Random.Range(0.0f, maxIndex))];
+            }
             StartCoroutine(spawnWave(nextSpawner));
         }
 

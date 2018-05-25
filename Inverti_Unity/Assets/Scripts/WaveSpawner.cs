@@ -57,11 +57,12 @@ public class WaveSpawner : MonoBehaviour {
             yield return new WaitForFixedUpdate();
         }
 
-        if(currentSpawnID > WaveLength) {
+        currentSpawnID++;
+        if (currentSpawnID >= WaveLength) {
+            Debug.Log("Destroying");
             Destroy(gameObject);
         }
 
-        currentSpawnID++;
         bl_callingEnabled = true;
 
         yield break;
@@ -101,7 +102,7 @@ public class WaveSpawner : MonoBehaviour {
         //}
 
         int possibleElementCount = WaveIDSetElementSelection[currentSpawnID].WaveElementSet.Length;
-        int selectedElement = WaveIDSetElementSelection[currentSpawnID].WaveElementSet[Random.Range(0, possibleElementCount - 1)];
+        int selectedElement = WaveIDSetElementSelection[currentSpawnID].WaveElementSet[Random.Range(0, possibleElementCount )];
         selectedElement = Mathf.RoundToInt(Mathf.Clamp(selectedElement, 0, EnemyWaveSelection.Length - 1));
         return EnemyWaveSelection[selectedElement];
     }
@@ -112,12 +113,14 @@ public class WaveSpawner : MonoBehaviour {
         currentSpawnID = 0;
         bl_callingEnabled = false;
         WaveLength = WaveIDSetElementSelection.Length;
+        EnemyWave = new WaveElement[WaveLength];
         WaveDuration = 0;
 
         while(currentSpawnID < WaveLength) {
 
             EnemyWave[currentSpawnID] = SelectElement();
             WaveDuration += EnemyWave[currentSpawnID].postSpawnDelay;
+            currentSpawnID++;
         }
 
         //EnemyWave = EnemyWaveSelection; //OLD PLACEHOLDER - REMOVE

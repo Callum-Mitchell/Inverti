@@ -52,18 +52,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaveIDSetElementSelection:
-  - WaveElementSet: 00000000
-  - WaveElementSet: 00000000
-  - WaveElementSet: 00000000
-  - WaveElementSet: 00000000
-  - WaveElementSet: 00000000
-  - WaveElementSet: 00000000
-  - WaveElementSet: 00000000
-  - WaveElementSet: 00000000
-  - WaveElementSet: 00000000
-  - WaveElementSet: 00000000
+  - WaveElementSet: 000000000100000002000000
+  - WaveElementSet: 000000000100000002000000
+  - WaveElementSet: 000000000100000002000000
+  - WaveElementSet: 000000000100000002000000
+  - WaveElementSet: 000000000100000002000000
+  - WaveElementSet: 000000000100000002000000
+  - WaveElementSet: 000000000100000002000000
+  - WaveElementSet: 000000000100000002000000
+  - WaveElementSet: 000000000100000002000000
+  - WaveElementSet: 000000000100000002000000
   EnemyWaveSelection:
-  - WaveObject: {fileID: 100000, guid: ab29fb9c227f75b4687737c50ba0e417, type: 3}
-    spawnPosition: {x: 0, y: 0, z: 60}
-    spawnRotationEulerAngles: {x: -90, y: 0, z: 0}
+  - WaveObject: {fileID: 1752523741398340, guid: 78d6cc32239875848bd451a4fc67b43c,
+      type: 2}
+    spawnPosition: {x: 0, y: 0, z: 0}
+    spawnRotationEulerAngles: {x: 0, y: 0, z: 0}
+    postSpawnDelay: 75
+  - WaveObject: {fileID: 1255139830809692, guid: cb023b4e65187ff409880b2ea25fbbe7,
+      type: 2}
+    spawnPosition: {x: 0, y: 0, z: 0}
+    spawnRotationEulerAngles: {x: 0, y: 0, z: 0}
+    postSpawnDelay: 75
+  - WaveObject: {fileID: 1198537727970460, guid: 07a0fea60f5347f4f87c473754f4f29d,
+      type: 2}
+    spawnPosition: {x: 0, y: 0, z: 0}
+    spawnRotationEulerAngles: {x: 0, y: 0, z: 0}
     postSpawnDelay: 75
