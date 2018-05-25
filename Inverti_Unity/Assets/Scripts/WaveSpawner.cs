@@ -21,13 +21,27 @@ public class WaveSpawner : MonoBehaviour {
         public Vector3 spawnPosition;
         public Vector3 spawnRotationEulerAngles;
         public int postSpawnDelay; //dictates how many FixedUpdate calls must pass after the element spawns before another can follow
-        public int[] possibleSpawnIDs; //The value of each spawn ID contained dictates when the element can appear, i.e. 1 = first object, 2 = second object
+        //public int[] possibleSpawnIDs; //The value of each spawn ID contained dictates when the element can appear, i.e. 1 = first object, 2 = second object
     }
+
+
+    /* SpawnIDData is an important class for wave design. The length of the class instance array
+     * determines the length of the wave in # of spawns (the index of this refers to the spawnID).
+     * The values of ElementSet determine which elements of EnemyWaveSelection could possibly be
+     * spawned for the given index of . None of the
+     * elements of the second dimension should be negative nor exceed the size of
+     * EnemyWaveSelection. */
+    [System.Serializable]
+    public class SpawnIDElementSelection {
+        public int[] WaveElementSet;
+    }
+    public SpawnIDElementSelection[] WaveIDSetElementSelection;
 
     public WaveElement[] EnemyWaveSelection; //contains all the potenial elements the wave can spawn
     private WaveElement[] EnemyWave; //actual generated wave as a whole, with elements obtained from EnemyWaveSelection
-    private int PossibleWaveElementCount; //total number of possible elements to choose from
-    public int WaveLength; //number of elements which will be spawned before the wave ends
+    //private int PossibleWaveElementCount; //total number of possible elements to choose from
+    private int WaveLength; //# of spawns before the wave ends 
+    private int WaveDuration; //# of FixedUpdate calls before the wave ends
 
     private int currentSpawnID;
     private bool bl_callingEnabled;
@@ -43,11 +57,11 @@ public class WaveSpawner : MonoBehaviour {
             yield return new WaitForFixedUpdate();
         }
 
-        if(currentSpawnID > WaveLength){
-
+        if(currentSpawnID > WaveLength) {
+            Destroy(gameObject);
         }
 
-        currentSpawnID--;
+        currentSpawnID++;
         bl_callingEnabled = true;
 
         yield break;
@@ -56,36 +70,40 @@ public class WaveSpawner : MonoBehaviour {
     WaveElement SelectElement() {
 
         /* TODO: add faster implementation (definitely possible; overall goal is to take 
-         * the int arrays of possible spawnIDs for each wave element and transform them into
-         * arrays/lists of possible wave elements that can be called for each spawnID. It
-         * should be possible to do this in linear time. Alternatively, just have the desired
-         * information be what gets entered into the inspector during wave designing.
-         */
-        int selectedID;
-        int possibleIDCount = 0;
-        List<int> possibleIDs = new List<int>();
+        * the int arrays of possible spawnIDs for each wave element and transform them into
+        * arrays/lists of possible wave elements that can be called for each spawnID. It
+        * should be possible to do this in linear time. Alternatively, just have the desired
+        * information be what gets entered into the inspector during wave designing.
+        */
 
-        for (int scanID = 0; scanID < EnemyWaveSelection.Length; scanID++) {
+        ////OLD IMPLEMENTATION
 
-            bool containsID = false;
-            WaveElement scannedElement = EnemyWaveSelection[scanID];
-            int possibleOccurrenceCount = scannedElement.possibleSpawnIDs.Length;
+        //int selectedID;
+        //int possibleIDCount = 0;
+        //List<int> possibleIDs = new List<int>();
 
-            for (int possibleSpawnIDsIndex = 0; possibleSpawnIDsIndex < possibleOccurrenceCount; possibleSpawnIDsIndex++) {
+        //for (int scanID = 0; scanID < EnemyWaveSelection.Length; scanID++) {
 
-                if (scannedElement.possibleSpawnIDs[possibleSpawnIDsIndex] == currentSpawnID) {
-                    containsID = true;
-                }
-            }
+        //    bool containsID = false;
+        //    WaveElement scannedElement = EnemyWaveSelection[scanID];
+        //    int possibleOccurrenceCount = scannedElement.possibleSpawnIDs.Length;
 
-            if(containsID) {
-                possibleIDs.Add(scanID);
-            }
-        }
+        //    for (int possibleSpawnIDsIndex = 0; possibleSpawnIDsIndex < possibleOccurrenceCount; possibleSpawnIDsIndex++) {
 
+        //        if (scannedElement.possibleSpawnIDs[possibleSpawnIDsIndex] == currentSpawnID) {
+        //            containsID = true;
+        //        }
+        //    }
 
-        selectedID = possibleIDs[Random.Range(0, possibleIDs.Count - 1)];
-        return EnemyWaveSelection[selectedID];
+        //    if(containsID) {
+        //        possibleIDs.Add(scanID);
+        //    }
+        //}
+
+        int possibleElementCount = WaveIDSetElementSelection[currentSpawnID].WaveElementSet.Length;
+        int selectedElement = WaveIDSetElementSelection[currentSpawnID].WaveElementSet[Random.Range(0, possibleElementCount - 1)];
+        selectedElement = Mathf.RoundToInt(Mathf.Clamp(selectedElement, 0, EnemyWaveSelection.Length - 1));
+        return EnemyWaveSelection[selectedElement];
     }
 
     // Use this for initialization
@@ -93,14 +111,19 @@ public class WaveSpawner : MonoBehaviour {
 		
         currentSpawnID = 0;
         bl_callingEnabled = false;
+        WaveLength = WaveIDSetElementSelection.Length;
+        WaveDuration = 0;
 
-        //TODO: generate enemy wave 
         while(currentSpawnID < WaveLength) {
 
-
+            EnemyWave[currentSpawnID] = SelectElement();
+            WaveDuration += EnemyWave[currentSpawnID].postSpawnDelay;
         }
 
-        //EnemyWave = EnemyWaveSelection; //PLACEHOLDER
+        //EnemyWave = EnemyWaveSelection; //OLD PLACEHOLDER - REMOVE
+
+        MasterSpawner.int_framesUntilSpawn += WaveDuration; //adds duration to already-existing post-wave delay
+        MasterSpawner.bl_isCallingWave = false;
 
         currentSpawnID = 0;
         bl_callingEnabled = true;
@@ -109,8 +132,8 @@ public class WaveSpawner : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-        if (bl_callingEnabled)
-        {
+        if (bl_callingEnabled) {
+
             bl_callingEnabled = false;
             StartCoroutine(spawnElement(EnemyWave[currentSpawnID]));
         }

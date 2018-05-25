@@ -5,17 +5,14 @@ using UnityEngine;
 public class MasterSpawner : MonoBehaviour {
 
     public int int_levelStartDelay = 60;
-    private static int int_framesUntilSpawn = 0;
-    private static bool bl_isCallingWave = false;
+    public static int int_framesUntilSpawn = 0;
+    public static bool bl_isCallingWave = false;
 
     [System.Serializable]
     public struct waveSpawner {
         public GameObject spawner;
-        public int int_startDelayFrames; //the number of FixedUpdate calls before the spawner will be called
-        public int int_endDelayFrames; //the number of FixedUpdate calls after the wave (spawner) is instantiated before the next is called
-        //TODO: instead of a preset time duration for each wave, have the wave being spawned
-        //(which may be variable in length depending on the elements called for spawning)
-        //calculate its own length, and use that value. (Can keep the post-wave delays as an option)
+        public int int_startDelayFrames; //the number of FixedUpdate calls before the wave will be called
+        public int int_endDelayFrames; //the number of FixedUpdate calls after the wave ends before the next is called
 
         public float fl_callFrequency; //used to determine the relative probability of the particular wave (spawner) being called
     }
@@ -36,7 +33,6 @@ public class MasterSpawner : MonoBehaviour {
         }
         Instantiate(nextWave.spawner, Vector3.zero, Quaternion.identity);
         int_framesUntilSpawn = nextWave.int_endDelayFrames;
-        bl_isCallingWave = false;
         yield break;
     }
 
