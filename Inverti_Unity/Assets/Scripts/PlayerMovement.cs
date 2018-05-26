@@ -33,8 +33,16 @@ public class PlayerMovement : MonoBehaviour {
         yield break; //ends the coroutine
     }
 
-	// Use this for initialization
-	void Start () {
+    private void OnTriggerEnter(Collider other) {
+        string colliderTag = other.gameObject.tag;
+        if ((colliderTag == "NeutralWall") || (colliderTag == "PositiveWall" && !bl_isPositiveState) || (colliderTag == "NegativeWall" && bl_isPositiveState)) {
+            //call shatter sequence/loss conditions here
+            Debug.Log("Shattered");
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
         fl_playerSpeed = 0;
 
         PlayerTransform = transform; //gameObject.GetComponent<Transform>();
