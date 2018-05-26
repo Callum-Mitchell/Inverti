@@ -9,17 +9,17 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1976587373559092}
+  m_RootGameObject: {fileID: 1037295791579890}
   m_IsPrefabParent: 1
---- !u!1 &1976587373559092
+--- !u!1 &1037295791579890
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4592139113426330}
-  - component: {fileID: 114369749918738192}
+  - component: {fileID: 4591229425950706}
+  - component: {fileID: 114544705876887948}
   m_Layer: 0
   m_Name: MasterSpawner
   m_TagString: Untagged
@@ -27,12 +27,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4592139113426330
+--- !u!4 &4591229425950706
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1976587373559092}
+  m_GameObject: {fileID: 1037295791579890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,12 +40,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114369749918738192
+--- !u!114 &114544705876887948
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1976587373559092}
+  m_GameObject: {fileID: 1037295791579890}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 122fc0d078b3d9d4fba4ac957b7813e5, type: 3}
@@ -54,6 +54,10 @@ MonoBehaviour:
   int_levelStartDelay: 60
   spawnerSet:
   - spawner: {fileID: 1699012517927320, guid: 629bb98bbc4baaa4b8d3a193bcf43ed3, type: 2}
+    int_startDelayFrames: 0
+    int_endDelayFrames: 40
+    fl_callFrequency: 1
+  - spawner: {fileID: 1079819518549074, guid: f3c3a21f68750344ea3659f85d256136, type: 2}
     int_startDelayFrames: 0
     int_endDelayFrames: 0
     fl_callFrequency: 1

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4694046349604512}
   - component: {fileID: 114190705623266244}
   m_Layer: 0
-  m_Name: TestWaveSpawner
+  m_Name: test-1_Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,14 +67,14 @@ MonoBehaviour:
       type: 2}
     spawnPosition: {x: 0, y: 0, z: 0}
     spawnRotationEulerAngles: {x: 0, y: 0, z: 0}
-    postSpawnDelay: 75
+    postSpawnDelay: 40
   - WaveObject: {fileID: 1255139830809692, guid: cb023b4e65187ff409880b2ea25fbbe7,
       type: 2}
     spawnPosition: {x: 0, y: 0, z: 0}
     spawnRotationEulerAngles: {x: 0, y: 0, z: 0}
-    postSpawnDelay: 75
+    postSpawnDelay: 40
   - WaveObject: {fileID: 1198537727970460, guid: 07a0fea60f5347f4f87c473754f4f29d,
       type: 2}
     spawnPosition: {x: 0, y: 0, z: 0}
     spawnRotationEulerAngles: {x: 0, y: 0, z: 0}
-    postSpawnDelay: 75
+    postSpawnDelay: 40
