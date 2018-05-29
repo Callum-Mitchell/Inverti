@@ -7,7 +7,7 @@ public class WrapAround : MonoBehaviour {
     private Transform player;
     public float leftBoundary;
     public float rightBoundary;
-    private static float wrapDistance = 72f;
+    private static float wrapDistance = 71.8f;
 	// Use this for initialization
 	void Start () {
         player = transform;
@@ -19,7 +19,7 @@ public class WrapAround : MonoBehaviour {
         if (player.position.x < leftBoundary) {
             player.Translate(new Vector3(wrapDistance, 0, 0), Space.World);
         }
-        else if (player.position.x > 36) {
+        else if (player.position.x > rightBoundary) {
             player.Translate(new Vector3(-wrapDistance, 0, 0), Space.World);
         }
 

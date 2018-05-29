@@ -4,12 +4,12 @@ using UnityEngine;
 
 /* Desired functionality for this class:
  * 1. Move walls at customizable speeds vertically and horizontally (DONE)
- * 2. Allow for back-and-forth wall movement horizontally or vertically
+ * 2. Allow for back-and-forth wall movement horizontally or vertically (DONE)
  * 3. Be able to toggle whether a wall is clamped onscreen (DONE)
  * 4. If wall is clamped on screen horizontally, but spawns offscreen,
  *    adjust position to onscreen similarly to wrap-around for player (DONE)
  * 5. If clamped, destroy object when it reaches a certain z threshold (DONE)
- * 6, If unclamped, destroy object after a set timeframe (DONE)
+ * 6. If unclamped, destroy object after a set timeframe (DONE)
 
  */
 public class WallMovement : MonoBehaviour {
