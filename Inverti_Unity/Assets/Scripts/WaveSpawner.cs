@@ -59,7 +59,6 @@ public class WaveSpawner : MonoBehaviour {
 
         currentSpawnID++;
         if (currentSpawnID >= WaveLength) {
-            Debug.Log("Destroying");
             Destroy(gameObject);
         }
 
@@ -70,39 +69,8 @@ public class WaveSpawner : MonoBehaviour {
 
     WaveElement SelectElement() {
 
-        /* TODO: add faster implementation (definitely possible; overall goal is to take 
-        * the int arrays of possible spawnIDs for each wave element and transform them into
-        * arrays/lists of possible wave elements that can be called for each spawnID. It
-        * should be possible to do this in linear time. Alternatively, just have the desired
-        * information be what gets entered into the inspector during wave designing.
-        */
-
-        ////OLD IMPLEMENTATION
-
-        //int selectedID;
-        //int possibleIDCount = 0;
-        //List<int> possibleIDs = new List<int>();
-
-        //for (int scanID = 0; scanID < EnemyWaveSelection.Length; scanID++) {
-
-        //    bool containsID = false;
-        //    WaveElement scannedElement = EnemyWaveSelection[scanID];
-        //    int possibleOccurrenceCount = scannedElement.possibleSpawnIDs.Length;
-
-        //    for (int possibleSpawnIDsIndex = 0; possibleSpawnIDsIndex < possibleOccurrenceCount; possibleSpawnIDsIndex++) {
-
-        //        if (scannedElement.possibleSpawnIDs[possibleSpawnIDsIndex] == currentSpawnID) {
-        //            containsID = true;
-        //        }
-        //    }
-
-        //    if(containsID) {
-        //        possibleIDs.Add(scanID);
-        //    }
-        //}
-
         int possibleElementCount = WaveIDSetElementSelection[currentSpawnID].WaveElementSet.Length;
-        int selectedElement = WaveIDSetElementSelection[currentSpawnID].WaveElementSet[Random.Range(0, possibleElementCount )];
+        int selectedElement = WaveIDSetElementSelection[currentSpawnID].WaveElementSet[Random.Range(0, possibleElementCount)];
         selectedElement = Mathf.RoundToInt(Mathf.Clamp(selectedElement, 0, EnemyWaveSelection.Length - 1));
         return EnemyWaveSelection[selectedElement];
     }

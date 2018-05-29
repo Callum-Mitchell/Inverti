@@ -62,8 +62,6 @@ public class MasterSpawner : MonoBehaviour {
         int spawnerCount = spawnerSet.Length;
         int spawnerID = Mathf.RoundToInt(Mathf.Ceil(spawnerCount / 2.0f));
         int stepDistance = Mathf.RoundToInt(Mathf.Ceil((spawnerID + 1) / 2.0f));
-        Debug.Log(spawnerID);
-        Debug.Log(fl_spawnIndices.Length);
         float currentIndex = fl_spawnIndices[spawnerID];
         float prevIndex;
         if(spawnerID == 0) {
@@ -73,7 +71,7 @@ public class MasterSpawner : MonoBehaviour {
             prevIndex = fl_spawnIndices[spawnerID - 1];
         }
 
-        //perform a binary search here to determine which spawner to call
+        //perform a binary search to determine which spawner to call
         do {
             if(prevIndex >= generatedIndex) {
                 //step left and adjust values accordingly
@@ -128,14 +126,16 @@ public class MasterSpawner : MonoBehaviour {
 	void FixedUpdate () {
 
         if (int_framesUntilSpawn <= 0 && !bl_isCallingWave) {
+
             bl_isCallingWave = true;
-            Debug.Log(maxIndex);
+
             if (fl_spawnIndices.Length == 1) {
                 nextSpawner = spawnerSet[0];
             }
             else {
                 nextSpawner = spawnerSet[getSpawnerFromIndex(Random.Range(0.0f, maxIndex))];
             }
+
             StartCoroutine(spawnWave(nextSpawner));
         }
 

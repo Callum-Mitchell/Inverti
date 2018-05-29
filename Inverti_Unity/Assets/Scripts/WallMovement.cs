@@ -20,6 +20,12 @@ public class WallMovement : MonoBehaviour {
 
     public bool isScreenClamped = true; //set false for permanent objects
 
+    //clamps used for back-and-forth movement
+    public float min_xPos = -72f;
+    public float max_xPos = 72f;
+    public float min_zPos = -100f;
+    public float max_zPos = 100f;
+
     public int wallLifetime = 600; //Total FixedUbdate calls before object is automatically destroyed
     private int wallAge = 0; //total frames passed since wall's inception
 	// Use this for initialization
@@ -31,6 +37,15 @@ public class WallMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+
+        if (wall.position.x < min_xPos || wall.position.x > max_xPos) {
+            xSpeed = -xSpeed;
+        }
+
+        if (wall.position.z < min_zPos || wall.position.z > max_zPos)
+        {
+            zSpeed = -zSpeed;
+        }
 
         wall.position += new Vector3(xSpeed, 0.0f, zSpeed);
 

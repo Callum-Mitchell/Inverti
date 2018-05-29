@@ -77,12 +77,10 @@ void FixedUpdate () {
                     if (!bl_isPositiveState) //Note: bl_isPositiveState has already been flipped to target by this point
                     {
                         StartCoroutine(flipPlayer(180));
-                        Debug.Log("Switching to negative state");
                     }
                     else
                     {
                         StartCoroutine(flipPlayer(0));
-                        Debug.Log("Switching to positive state");
                     }
                 }
 
