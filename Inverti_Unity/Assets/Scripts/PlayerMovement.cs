@@ -15,9 +15,12 @@ public class PlayerMovement : MonoBehaviour {
     private int int_flipFrames = 0;
 
     private const int int_FLIP_DURATION = 12; //The number of FixedUpdates over which a player's state swap will occur
+
+    //TODO: clarify the differences between these two values
     private static bool bl_isFlipping = false;
-    private static bool bl_isPositiveState = true;
     private static bool bl_isFlipAxisInUse = false;
+
+    private static bool bl_isPositiveState = true;
 
 
     IEnumerator flipPlayer(float fl_targetzRotation) {
@@ -38,6 +41,7 @@ public class PlayerMovement : MonoBehaviour {
         if ((colliderTag == "NeutralWall") || (colliderTag == "PositiveWall" && !bl_isPositiveState) || (colliderTag == "NegativeWall" && bl_isPositiveState)) {
             //call shatter sequence/loss conditions here
             Debug.Log("Shattered");
+            LevelManager.gameIsActive = false;
         }
     }
 
@@ -50,13 +54,23 @@ public class PlayerMovement : MonoBehaviour {
         PlayerTransform.eulerAngles = playerTargetEulerAngles;
 
         bl_isFlipping = false;
-        bl_isPositiveState = true;
         bl_isFlipAxisInUse = false;
+
+        bl_isPositiveState = true;
         int_flipFrames = 0;
     }
 
-// Update is called once per frame
-void FixedUpdate () {
+    /* Update is called once per frame rendered, no matter what.
+     *Can be used while player is dead
+     */
+    void Update () {
+        if(Input.GetButtonDown("Reset")) {
+            LevelManager.isResettingLevel = true;
+        }
+    }
+
+    // FixedUpdate is repeatedly called only while player is alive
+    void FixedUpdate () {
 
         /*This code section calls the coroutine to flip to the opposite state
          * whenever the flip axis key is hit. It does not allow for
@@ -65,7 +79,7 @@ void FixedUpdate () {
         {
             if (bl_isFlipAxisInUse == false)
             {
-                if (!bl_isFlipping)
+                if (bl_isFlipping == false)
                 {
 
                     if (gameObject.tag == "Player")

@@ -13,9 +13,10 @@ public class TimerController : MonoBehaviour {
         time_secs = 0.0f;
 
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+    // Only called while game is active (player still alive)
+    //Timer will stop counting once player has died/been shattered
+    void FixedUpdate () {
 
         time_secs += Time.deltaTime;
         GetComponent<Text>().text = time_secs.ToString(format: "0#.##");

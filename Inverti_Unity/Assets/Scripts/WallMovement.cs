@@ -28,6 +28,7 @@ public class WallMovement : MonoBehaviour {
 
     public int wallLifetime = 600; //Total FixedUbdate calls before object is automatically destroyed
     private int wallAge = 0; //total frames passed since wall's inception
+
 	// Use this for initialization
 	void Start () {
 

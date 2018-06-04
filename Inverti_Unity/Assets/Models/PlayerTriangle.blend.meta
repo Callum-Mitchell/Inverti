@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 45cb916d77614bc4f87a9bcd1b2b47af
-timeCreated: 1526962305
+timeCreated: 1528083665
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -13,7 +13,12 @@ ModelImporter:
     4300000: Plane
     7400000: Default Take
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_001__VertexPaint
+    second: {fileID: 2100000, guid: 6da9f1cca44025e4baae5ee00c29e5e6, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -65,7 +70,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
