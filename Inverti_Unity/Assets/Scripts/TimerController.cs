@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class TimerController : MonoBehaviour {
 
-    private float time_secs;
-
+    public static float time_secs;
 	// Use this for initialization
 	void Start () {
 
