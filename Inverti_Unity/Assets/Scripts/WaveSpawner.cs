@@ -103,6 +103,11 @@ public class WaveSpawner : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
+        if (LevelManager.isResettingLevel)
+        {
+            Destroy(gameObject);
+        }
+
         if (bl_callingEnabled) {
 
             bl_callingEnabled = false;

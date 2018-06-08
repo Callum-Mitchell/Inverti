@@ -45,8 +45,8 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    // Use this for initialization
-    void Start () {
+    //Reset is called upon (re)starting a level
+    public void Reset() {
         fl_playerSpeed = 0;
 
         PlayerTransform = transform; //gameObject.GetComponent<Transform>();
@@ -58,6 +58,11 @@ public class PlayerMovement : MonoBehaviour {
 
         bl_isPositiveState = true;
         int_flipFrames = 0;
+    }
+
+    // Use this for initialization
+    void Start () {
+        Reset();
     }
 
     /* Update is called once per frame rendered, no matter what.

@@ -29,8 +29,16 @@ public class WallMovement : MonoBehaviour {
     public int wallLifetime = 600; //Total FixedUbdate calls before object is automatically destroyed
     private int wallAge = 0; //total frames passed since wall's inception
 
-	// Use this for initialization
-	void Start () {
+    //Called upon resetting a level. Will destroy the wall and call appropriate visual effects
+    private void Reset() {
+
+        //Call visual effects here (before destroying)
+        Destroy(gameObject);
+
+    }
+
+    // Use this for initialization
+    void Start () {
 
         wall = transform;
         wallAge = 0;
@@ -38,6 +46,10 @@ public class WallMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+
+        if(LevelManager.isResettingLevel) {
+            Reset();
+        }
 
         if (wall.position.x < min_xPos || wall.position.x > max_xPos) {
             xSpeed = -xSpeed;

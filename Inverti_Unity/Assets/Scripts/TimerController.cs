@@ -6,11 +6,15 @@ using UnityEngine.UI;
 public class TimerController : MonoBehaviour {
 
     public static float time_secs;
-	// Use this for initialization
-	void Start () {
 
+    public void Reset() {
         time_secs = 0.0f;
+        GetComponent<Text>().text = "00.00";
+    }
 
+    // Use this for initialization
+    void Start () {
+        Reset();
 	}
 
     // Only called while game is active (player still alive)

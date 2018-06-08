@@ -12,6 +12,13 @@ public class LevelManager : MonoBehaviour {
 
     public int levelID = 1; //used only on "level" type scenes 
 
+    public GameObject player;
+    public GameObject leftPlayerClone;
+    public GameObject rightPlayerClone;
+
+    public GameObject timer;
+    public GameObject levelRanking;
+    public GameObject masterSpawner;
 
     //The type of the current level will determine which others to load, etcetera
     [HideInInspector]
@@ -51,8 +58,20 @@ public class LevelManager : MonoBehaviour {
      * all appropriate values and objects to the starting position
      * (that can still go here)
      */
-    public void ResetCurrentLevel() {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    IEnumerator ResetCurrentLevel() {
+
+        //This WaitForFixedUpdate yield gives other affected objects a chance to detect a reset via isResettingLevel
+        yield return new WaitForFixedUpdate();
+
+        player.GetComponent<PlayerMovement>().Reset();
+        leftPlayerClone.GetComponent<PlayerMovement>().Reset();
+        rightPlayerClone.GetComponent<PlayerMovement>().Reset();
+        timer.GetComponent<TimerController>().Reset();
+        levelRanking.GetComponent<LevelRankingText>().Reset();
+        masterSpawner.GetComponent<MasterSpawner>().Reset();
+        Reset();
+
+        //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadNewLevel(string newLevelName) {
@@ -83,12 +102,16 @@ public class LevelManager : MonoBehaviour {
         Time.timeScale = 0; //All FixedUpdate functionality will be deactivated. 
     }
 
-	// Initialization. Will be called when a loaded scene is activated (preloaded scenes are designed to start out inactive)
-	void Awake () {
+    private void Reset() {
         gameIsActive = true;
         isSwitchingLevels = false;
         isResettingLevel = false;
-}
+    }
+
+    // Initialization. Will be called when a loaded scene is activated (preloaded scenes are designed to start out inactive)
+    void Awake () {
+        Reset();
+    }
 	
 	void FixedUpdate () {
 		if(!gameIsActive) {
@@ -100,7 +123,8 @@ public class LevelManager : MonoBehaviour {
     void Update () {
         if(isResettingLevel) {
             Time.timeScale = 1f;
-            ResetCurrentLevel();
+            gameIsActive = true;
+            StartCoroutine(ResetCurrentLevel());
         }
     }
 }

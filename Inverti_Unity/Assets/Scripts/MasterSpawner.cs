@@ -112,14 +112,21 @@ public class MasterSpawner : MonoBehaviour {
         return spawnerID;
     }
 
-	// Use this for initialization
-	void Start () {
+    public void Reset() {
 
         fl_spawnIndices = getSpawnIndices();
         maxIndex = fl_spawnIndices[spawnerSet.Length - 1];
 
         int_framesUntilSpawn = int_levelStartDelay; //gives a brief (adjustable) window upon starting a level before spawning anything
         bl_isCallingWave = false;
+
+    }
+
+    // Use this for initialization
+    void Start () {
+
+        Reset();
+
 	}
 	
 	// Update is called once per frame

@@ -41,8 +41,7 @@ public class LevelRankingText : MonoBehaviour {
         currentRankingNumber++;
     }
 
-    // Use this for initialization
-    void Start () {
+    public void Reset() {
 
         rankingCount = rankingSet.Length;
         currentRankingNumber = 0;
@@ -51,6 +50,10 @@ public class LevelRankingText : MonoBehaviour {
         UpdateRanking();
 
         GetComponent<Text>().text = currentRankingText;
+    }
+    // Use this for initialization
+    void Start () {
+        Reset();
     }
 
     // Update is called once per frame

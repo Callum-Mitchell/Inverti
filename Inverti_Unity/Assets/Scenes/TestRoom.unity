@@ -396,6 +396,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelID: 1
+  player: {fileID: 801232799}
+  leftPlayerClone: {fileID: 624415993}
+  rightPlayerClone: {fileID: 2004815764}
+  timer: {fileID: 69800151}
+  levelRanking: {fileID: 670052907}
+  masterSpawner: {fileID: 1501135448}
   sceneType: 0
 --- !u!4 &494290272
 Transform:
@@ -977,6 +983,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5eeb465e7f334e46a32e76c89e5ebc2, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1501135448 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1037295791579890, guid: c5eeb465e7f334e46a32e76c89e5ebc2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1501135447}
 --- !u!1001 &1588210748
 Prefab:
   m_ObjectHideFlags: 0
