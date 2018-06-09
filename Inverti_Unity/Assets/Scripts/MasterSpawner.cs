@@ -86,7 +86,7 @@ public class MasterSpawner : MonoBehaviour {
                 //step right and adjust values accordingly
                 if (stepDistance >= spawnerCount - spawnerID)
                 {
-                    spawnerID = spawnerCount;
+                    spawnerID = spawnerCount - 1;
                 }
                 else
                 {

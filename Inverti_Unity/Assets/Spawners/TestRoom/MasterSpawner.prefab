@@ -55,9 +55,49 @@ MonoBehaviour:
   spawnerSet:
   - spawner: {fileID: 1699012517927320, guid: 629bb98bbc4baaa4b8d3a193bcf43ed3, type: 2}
     int_startDelayFrames: 0
-    int_endDelayFrames: 40
-    fl_callFrequency: 1
-  - spawner: {fileID: 1079819518549074, guid: f3c3a21f68750344ea3659f85d256136, type: 2}
-    int_startDelayFrames: 0
     int_endDelayFrames: 0
     fl_callFrequency: 1
+  - spawner: {fileID: 1079819518549074, guid: f3c3a21f68750344ea3659f85d256136, type: 2}
+    int_startDelayFrames: 20
+    int_endDelayFrames: 0
+    fl_callFrequency: 1
+  - spawner: {fileID: 1961570421897676, guid: b414be850998d8140ba86d130c47ea48, type: 2}
+    int_startDelayFrames: 0
+    int_endDelayFrames: 0
+    fl_callFrequency: 0.5
+  - spawner: {fileID: 1877438103818570, guid: 5dda5c59e0549834e944b313f51a776c, type: 2}
+    int_startDelayFrames: 0
+    int_endDelayFrames: 0
+    fl_callFrequency: 0.5
+  - spawner: {fileID: 1342985827238192, guid: 057231e27305e514cb0cf1fccadf3530, type: 2}
+    int_startDelayFrames: 10
+    int_endDelayFrames: 0
+    fl_callFrequency: 0.2
+  - spawner: {fileID: 1556106910657582, guid: f5e590e9d3e9cd749815413f0340faae, type: 2}
+    int_startDelayFrames: 10
+    int_endDelayFrames: 0
+    fl_callFrequency: 0.2
+  - spawner: {fileID: 1806333869657224, guid: b3941f8a9a4705949bd4c84d95edd63f, type: 2}
+    int_startDelayFrames: 10
+    int_endDelayFrames: 0
+    fl_callFrequency: 0.2
+  - spawner: {fileID: 1109096521707312, guid: 291c3a8afdc12824290f5d38555cb81e, type: 2}
+    int_startDelayFrames: 10
+    int_endDelayFrames: 0
+    fl_callFrequency: 0.2
+  - spawner: {fileID: 1702082203540756, guid: 3c5d58635e0ec814089c0fee6a941699, type: 2}
+    int_startDelayFrames: 10
+    int_endDelayFrames: 0
+    fl_callFrequency: 0.2
+  - spawner: {fileID: 1467806727704832, guid: 265d3001fc845cb44805a0ec2525fc81, type: 2}
+    int_startDelayFrames: 10
+    int_endDelayFrames: 0
+    fl_callFrequency: 0.2
+  - spawner: {fileID: 1421031097484284, guid: c30491e09475a264396073309c977671, type: 2}
+    int_startDelayFrames: 0
+    int_endDelayFrames: 0
+    fl_callFrequency: 0.5
+  - spawner: {fileID: 1737758297704580, guid: 69913f48ab8522d4d8dd941530554fb3, type: 2}
+    int_startDelayFrames: 0
+    int_endDelayFrames: 0
+    fl_callFrequency: 0.5

@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1699012517927320}
+  m_RootGameObject: {fileID: 1556106910657582}
   m_IsPrefabParent: 1
---- !u!1 &1699012517927320
+--- !u!1 &1556106910657582
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4694046349604512}
-  - component: {fileID: 114190705623266244}
+  - component: {fileID: 4513817376901486}
+  - component: {fileID: 114261614750774282}
   m_Layer: 0
-  m_Name: test-1_Spawner
+  m_Name: test-4(B)_Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4694046349604512
+--- !u!4 &4513817376901486
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1699012517927320}
+  m_GameObject: {fileID: 1556106910657582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,39 +40,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114190705623266244
+--- !u!114 &114261614750774282
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1699012517927320}
+  m_GameObject: {fileID: 1556106910657582}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74b22fc923b856c4bbc87b08a1126357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WaveIDSetElementSelection:
-  - WaveElementSet: 000000000100000002000000
-  - WaveElementSet: 000000000100000002000000
-  - WaveElementSet: 000000000100000002000000
-  - WaveElementSet: 000000000100000002000000
-  - WaveElementSet: 000000000100000002000000
-  - WaveElementSet: 000000000100000002000000
-  - WaveElementSet: 000000000100000002000000
-  - WaveElementSet: 000000000100000002000000
+  - WaveElementSet: 00000000
+  - WaveElementSet: 00000000
+  - WaveElementSet: 00000000
   EnemyWaveSelection:
-  - WaveObject: {fileID: 1752523741398340, guid: 78d6cc32239875848bd451a4fc67b43c,
+  - WaveObject: {fileID: 1766261094770756, guid: 0896c50dde4237e45afe223e3340d2cd,
       type: 2}
     spawnPosition: {x: 0, y: 0, z: 0}
     spawnRotationEulerAngles: {x: 0, y: 0, z: 0}
-    postSpawnDelay: 40
-  - WaveObject: {fileID: 1255139830809692, guid: cb023b4e65187ff409880b2ea25fbbe7,
-      type: 2}
-    spawnPosition: {x: 0, y: 0, z: 0}
-    spawnRotationEulerAngles: {x: 0, y: 0, z: 0}
-    postSpawnDelay: 40
-  - WaveObject: {fileID: 1198537727970460, guid: 07a0fea60f5347f4f87c473754f4f29d,
-      type: 2}
-    spawnPosition: {x: 0, y: 0, z: 0}
-    spawnRotationEulerAngles: {x: 0, y: 0, z: 0}
-    postSpawnDelay: 40
+    postSpawnDelay: 96
